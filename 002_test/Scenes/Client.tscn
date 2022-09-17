@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Clients/ClientScript.gd" type="Script" id=1]
+[ext_resource path="res://Clients/testClient.tres" type="Resource" id=2]
+
+[node name="Button" type="Button"]
+margin_left = 1.0
+margin_top = 193.0
+margin_right = 169.0
+margin_bottom = 231.0
+text = "Serve!"
+script = ExtResource( 1 )
+mind = ExtResource( 2 )
+
+[node name="clientProfile" type="Panel" parent="."]
+margin_left = -1.0
+margin_top = -193.0
+margin_right = 169.0
+margin_bottom = -2.0
+
+[node name="clientName" type="Label" parent="clientProfile"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -45.0
+margin_top = 7.0
+margin_right = 45.0
+margin_bottom = 21.0
+
+[node name="patienceBar" type="ProgressBar" parent="clientProfile"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -85.0
+margin_top = -14.0
+margin_right = 85.0
+percent_visible = false
+
+[node name="patienceTimer" type="Timer" parent="clientProfile/patienceBar"]
+
+[connection signal="timeout" from="clientProfile/patienceBar/patienceTimer" to="." method="_on_patienceTimer_timeout"]
